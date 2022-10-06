@@ -1,0 +1,261 @@
+#!/usr/bin/env node
+
+ /**
+ * 
+ * @param val connection mysql
+ * rung gen
+ */
+
+ //google mail
+const nodemailer = require('nodemailer');
+const { google } = require('googleapis');
+const configmail = require('../db/configmail');
+const OAuth2 = google.auth.OAuth2
+
+const dotenv = require('dotenv');
+dotenv.config({
+    path: './.env'
+});
+let config = {
+    host     : process.env.DATABASE_HOST,
+    port     : process.env.DATABASE_PORT,
+    user     : process.env.DATABASE_USER,
+    password : process.env.DATABASE_PASSWORD,
+    database : process.env.DATABASE_NAME
+
+};
+var myDB = require('../db/class_dbcommand');
+let command = new  myDB(config);
+if(command.connection){
+  console.log('mysql connecton sucess..' + process.env.DATABASE_PORT)
+}else{
+    console.log('mysql not connecton..')
+}
+
+/**
+ * Module dependencies.
+ */
+var app = require('../app');
+var debug = require('debug')('myapp:server');
+var http = require('http');
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+console.log('PORT: ' + port);
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+
+//socketio
+const io = require('socket.io')(server);
+const users = [];
+
+io.on('connection', (socket) => {
+    console.log('User connected socket id : ' + socket.id);
+        
+    socket.on('new-user', name => {
+        users[socket.id] = name ;  
+        socket.broadcast.emit('user-connected', name);       
+      })
+      socket.on('new-user-sys', namesys => {
+        users[socket.id] = namesys;   
+        socket.broadcast.emit('user-connected', namesys);       
+      })      
+      socket.on('bot-listener', message => {
+        var socketId = message.namesys;
+        console.log('socketId : ' + socketId);
+        socket.to(socketId).emit('message-bot', { message: message, name: users[message.namesys] })        
+        //socket.broadcast.emit('chat-message', { message: message, name: users[socket.id] })
+        console.log('bot-listener :*************');
+        console.log(message);
+      })
+
+      socket.on('send-message-client-listener', message => {
+        var socketId = message.sender;
+        console.log('socketId : ' + socketId);
+        var vservertext = 'Server - รับทราบ';
+        socket.to(socketId).emit('chat-message-bot', { message: message + vservertext, name: users[message.namesys]})
+        //socket.broadcast.emit('chat-messageai', { message: message, name: users[socket.id] })
+        console.log('send-message-client-listener :*************');
+        console.log(message);
+        //   sender: 'rung',
+//   namesys: 'rung#rung',
+//   message: 'd',
+//   order_products_id: 1,
+//   contents_id: 2,
+//   products_id: 1,
+//   contents_id: 2,
+//   products_id: 1,
+//   contents_type: 'Present',
+//   contents_name: '2 am/is/are (questions)',
+//   subscription: 'your are '
+
+        addmessage_client(
+            message.sender 
+          , message.namesys
+          , message.message 
+          , message.order_products_id
+          , message.contents_id
+          , message.products_id
+          , message.contents_type
+          , message.contents_name
+          , message.subscription,message.uid);
+
+      })
+
+      socket.on('disconnect', () => {
+        socket.broadcast.emit('user-disconnected', users[socket.id])
+        delete users[socket.id]
+      })
+      //
+      socket.on('joinRoom', function(data) {
+        socket.join(data.room.room);
+    });
+
+
+    //brain
+
+    socket.on('brain-bot-listener', message => {
+      var socketId = message.sender;
+      console.log('socketId : ' + socketId);
+      socket.to(socketId).emit('brain-message-bot', { message: message, name: users[message.namesys] })        
+      console.log('brain-bot-listener :*************');
+      console.log(message);
+    })
+
+    socket.on('client-listener', message => {
+      var socketId =  message.namesys;
+      console.log('socketId : ' + socketId);
+     
+      var vservertext = 'Server - รับทราบ';
+      socket.to(socketId).emit('brain-client-message', { message: message + vservertext, name: users[message.namesys]}) 
+      console.log('client-listener :*************');
+      console.log(message);
+    })
+
+});
+
+
+
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}
+
+function  addmessage_client(            
+    sender 
+  , namesys
+  , message 
+  , order_products_id
+  , contents_id
+  , products_id
+  , contents_type
+  , contents_name
+  , subscription
+  , uid
+  ){
+  try{
+ 
+
+    subscription = subscription.replace("'", "|");
+    message = message.replace("'", "|");
+    contents_name = contents_name.replace("'", "|");
+    contents_type = contents_type.replace("'", "|");
+
+ //SELECT 
+
+ var sql = "insert into timesheet (customers_id, orders_products_id, contents_id, products_id, contents_type, contents_name, subscription, sendername, message, time_step)values(";
+  sql += uid;
+  sql += "," + order_products_id;
+  sql += "," + contents_id;
+  sql += "," + products_id;
+  sql += ",'" + contents_type + "' ";
+  sql += ",'" + contents_name + "' ";
+  sql += ",'" + subscription + "' ";
+  sql += ",'" + sender + "' ";
+  sql += ",'" + message + "' ";
+  sql += ",now()";
+  sql += ")";
+  //console.log(message);
+
+   if(command.query(sql)){
+
+   }
+  
+
+  }catch(error){
+    console.log(error);
+  }
+  return true;
+}
+
+

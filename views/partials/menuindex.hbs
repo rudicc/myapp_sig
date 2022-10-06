@@ -1,0 +1,106 @@
+                   
+                       
+<script>
+  initmenu();
+  function initmenu(){
+    var vhtml =`
+
+  <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white cd1 " style="width: 320px;">
+    <span> <i class="bi bi-house"></i> </span>
+    <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+      <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+     
+      <span class="fs-5 fw-semibold">Home</span>
+    </a>    
+
+
+    <div class="list-group list-group-flush border-bottom scrollarea">
+
+      <a href="./products" class="list-group-item list-group-item-action  py-3 lh-sm" aria-current="true">
+        <i class="bi bi-gift"></i>
+        <div class="d-flex w-100 align-items-center justify-content-between"> 
+     
+          <strong class="mb-1">
+              Contents(สารบัญ)
+        </strong>
+          <small><i class="bi bi-check2-circle"></i></small>
+        </div>
+        <div class="col-10 mb-1 small"> 
+            <mark>
+                 Table of contents english : (สารบัญภาษาอังกฤษ)
+            </mark>
+        </div>
+      </a>
+
+      <a href="./guides" class="list-group-item list-group-item-action  py-3 lh-sm" aria-current="true">
+        <i class="bi bi-signpost-split"></i>
+        <div class="d-flex w-100 align-items-center justify-content-between">
+      
+          <strong class="mb-1">
+              
+              Guide (แนะแนว)
+          </strong>
+          <small><i class="bi bi-check2-circle"></i></small>
+        </div>
+        <div class="col-10 mb-1 small"> 
+             
+                 Guidance for use (แนะแนวการใช้งานระบบ)
+            
+        </div>
+      </a>
+
+      <a href="./accounts" class="list-group-item list-group-item-action  py-3 lh-sm" aria-current="true">
+        <i class="bi bi-person-bounding-box"></i>
+        <div class="d-flex w-100 align-items-center justify-content-between">
+   
+          <strong class="mb-1"> 
+              User Account(บัญชี)
+        </strong>
+          <small><i class="bi bi-check2-circle"></i></small>
+        </div>
+        <div class="col-10 mb-1 small"> 
+           
+                 User account (บัญชีผู้ใช้งาน)
+            
+        </div>
+      </a>
+
+      <a href="/auth/Logout" class="list-group-item list-group-item-action  py-3 lh-sm" aria-current="true">
+             <i class="bi bi-x-square-fill"></i>
+        <div class="d-flex w-100 align-items-center justify-content-between">
+    
+          <strong class="mb-1"> 
+              Logout
+        </strong>
+          
+        </div>
+ 
+      </a>
+    </div>
+  </div>
+`;
+
+              const div = document.createElement('div');            
+              div.className = "action_menu";
+              div.style ="height: 500px; overflow: auto; max-width:auto;";              
+              div.innerHTML = vhtml;
+              action_menu.append(div);    
+  }
+
+    $(document).ready(function(){
+ 
+    $("#action_menu_btn").click(function(){
+      $('.action_menu').toggle("slow");  
+    });
+ 
+      $("#action_menu_btn_sub").hover(function()
+          { 
+            $('.action_menu_sub').toggle("slow");  
+          }, function()
+          {
+                  
+            $('.action_menu_sub').hide("slow");  
+      }); 
+            
+});
+</script>

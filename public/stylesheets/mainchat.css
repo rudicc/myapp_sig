@@ -1,0 +1,285 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+
+
+body{
+  /* background-image: url(./Images/benjamin-voros-phIFdC6lA4E-unsplash.jpg); */
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+
+  backdrop-filter: blur(1rem);
+ 
+  border-top-color: rgba(255, 255, 255, 0.5);
+  border-left-color: rgba(255, 255, 255, 0.5);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  border-right-color: rgba(255, 255, 255, 0.1);
+
+  color: white;
+}
+
+.gradient-custom {
+    /* fallback for old browsers */
+    
+    /* background: #fccb90; */
+
+    background:transparent;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to bottom right, rgba(252, 203, 144, 1), rgba(213, 126, 235, 1));
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to bottom right, rgb(111, 237, 231), rgb(82, 77, 225))
+}
+
+.mask-custom {
+    background: rgba(24, 24, 16, .2);
+    /* border-radius: 2em; */
+    backdrop-filter: blur(1rem);
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    background-clip: padding-box;
+    box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+}
+
+.cd1 {
+    background-color: rgba(255,255,225,0.1);
+  }
+
+.cardchatR{
+  
+    border-top-left-radius: 0rem;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border: 0px solid transparent;
+    
+    backdrop-filter: blur(1rem);
+    box-shadow: 1.3rem 1.3rem 1.3rem rgba(0, 0, 0, 0.5);
+  
+    border-top-color: rgba(255, 255, 255, 0.5);
+    border-left-color: rgba(255, 255, 255, 0.5);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    border-right-color: rgba(255, 255, 255, 0.1);
+  
+  
+  }
+
+  .cardchatL{
+
+    justify-self: left;  
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 0rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border: 0px solid transparent;
+    
+    backdrop-filter: blur(1rem);
+    box-shadow: 1.3rem 1.3rem 1.3rem rgba(0.0, 0, 0, 0.5);
+  
+    border-top-color: rgba(255, 255, 255, 0.1);
+    border-left-color: rgba(255, 255, 255, 0.1);
+    border-bottom-color: rgba(255, 255, 255, 0.5);
+    border-right-color: rgba(255, 255, 255, 0.5);
+  
+  
+  }
+
+  .cardchatR-menuindex{
+  
+    border-top-left-radius: 0rem;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border: 1px solid transparent;
+    color:#fffffffa;
+    backdrop-filter: blur(1rem);
+    box-shadow: 1.3rem 1.3rem 1.3rem rgba(0, 0, 0, 0.5);
+  
+    border-top-color: rgba(255, 255, 255, 0.5);
+    border-left-color: rgba(255, 255, 255, 0.5);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    border-right-color: rgba(255, 255, 255, 0.1);
+  
+  
+  }
+
+  .cardchatL-menuindex{
+
+    justify-self: left;  
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 0rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border: 1px solid transparent;
+   color:#fffffffa;
+    backdrop-filter: blur(1rem);
+    box-shadow: 1.3rem 1.3rem 1.3rem rgba(0.0, 0, 0, 0.5);
+  
+    border-top-color: rgba(255, 255, 255, 0.1);
+    border-left-color: rgba(255, 255, 255, 0.1);
+    border-bottom-color: rgba(255, 255, 255, 0.5);
+    border-right-color: rgba(255, 255, 255, 0.5);
+  
+  
+  }
+
+  .displaynone {
+    display: none
+}
+
+.panel-body
+{
+    overflow-y: scroll;
+}
+
+
+.card-header{
+  border-radius: 15px 15px 0 0 !important;
+  border-bottom: 0 !important;
+}
+
+.chat{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.card--{
+  height: 500px;
+  border-radius: 15px !important;
+  background-color: rgba(0,0,0,0.4) !important;
+}
+.contacts_body{
+  padding:  0.75rem 0 !important;
+  overflow-y: auto;
+  white-space: nowrap;
+}
+
+.msg_card_body{
+  overflow-y: auto;
+}
+.online_icon{
+  position: absolute;
+  height: 15px;
+  width:15px;
+  background-color: #4cd137;
+  border-radius: 50%;
+  bottom: 0.2em;
+  right: 0.4em;
+  border:1.5px solid white;
+  }
+.offline{
+  background-color: #c23616 !important;
+  }
+.user_info{
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 15px;
+  }
+  .user_info span{
+  font-size: 20px;
+  color: white;
+  }
+  .user_info p{
+  font-size: 10px;
+  color: rgba(255,255,255,0.6);
+  }    
+.video_cam{
+  margin-left: 50px;
+  margin-top: 5px;
+  }
+  .video_cam span{
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 20px;
+  }   
+   
+.msg_cotainer{
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 10px;
+  border-radius: 25px;
+  background-color: #82ccdd;
+  padding: 10px;
+  position: relative;
+  }
+  .msg_cotainer_send{
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 10px;
+  border-radius: 25px;
+  background-color: #78e08f;
+  padding: 10px;
+  position: relative;
+  }
+  .msg_time{
+  position: absolute;
+  left: 0;
+  bottom: -15px;
+  color: rgba(255,255,255,0.5);
+  font-size: 10px;
+  }
+  .msg_time_send{
+  position: absolute;
+  right:0;
+  bottom: -15px;
+  color: rgba(255,255,255,0.5);
+  font-size: 10px;
+  }
+  .msg_head{
+  position: relative;
+  }  
+  
+.img_cont{
+    position: relative;
+    height: 70px;
+    width: 70px;
+}
+.img_cont_msg{
+    height: 40px;
+    width: 40px;
+}
+
+
+/**********Event message****/
+#flip {
+  padding: 5px;
+  text-align: center;
+  background: transparent;
+}
+#panel {
+  padding: 5px;
+  text-align: center;
+  background-color: #d6eecc5a;
+  border: solid 1px #9ddfd6ec;
+  border-radius: 1rem;
+}
+
+#panel {
+  padding: 50px;
+  display: none;
+}
+
+.getorder_contents{
+  z-index: 1;
+  position: absolute;
+  padding: 15px 0;
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border-radius: 15px;
+  top: 30px;
+  right: 15px;
+  display: none;
+}
+.getorder_contents div :hover{
+  display: block;
+  cursor: pointer;
+}
+
+
+#rate-control {
+  display:flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 5;
+}
+
+#seconds, #tens{
+  font-size:1em;
+}

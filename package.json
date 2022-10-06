@@ -1,0 +1,35 @@
+{
+  "name": "myapp",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "^6.5.2",
+    "axios": "^0.27.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "bootstrap-icons": "^1.9.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^16.0.2",
+    "express": "~4.16.1",
+    "express-fileupload": "^1.4.0",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.17.3",
+    "fs": "^0.0.1-security",
+    "googleapis": "^108.0.0",
+    "hbs": "~4.0.4",
+    "http-errors": "~1.6.3",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "~1.9.1",
+    "mysql": "^2.18.1",
+    "node-fetch": "^3.2.10",
+    "nodemailer": "^6.8.0",
+    "socket.io": "^4.5.2",
+    "three": "^0.145.0",
+    "three-orbitcontrols": "^2.110.3",
+    "util": "^0.12.4"
+  }
+}

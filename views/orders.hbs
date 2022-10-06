@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>Sig English - AI Speech , Learning Grammar</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+         <link href="/stylesheets/favicon.ico" rel="shortcut icon" type="image/x-icon" >
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" href="/stylesheets/main.css"> 
+        <link rel="stylesheet" href="/stylesheets/mainchat.css">       
+        <link rel="stylesheet" href="/stylesheets/panelflipevent.css">     
+        <link rel="stylesheet" href="/stylesheets/menucontents.css">  
+        <script defer src="/socket.io/socket.io.js"></script>
+        <script  defer src="/javascripts/scriptchatguides.js"></script>     
+           
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+</head>
+<body>
+  <script type="text/javascript">
+  var micOpen = true;
+    function CheckStep(transcript){
+
+    }
+    function Bot_SpeechSynthesisUtterance(message){
+          //appendMessage(message);
+          var u = new SpeechSynthesisUtterance();                                 
+          u.text = message;
+          u.lang = 'en-US';
+          u.rate = 0.8;
+          u.onend = function(event) {  
+              var vTime = formatDate(new Date());
+              console.log('Finished: '  + vTime); 
+              //setTimeout(OpenMic('open'),3000);
+              //step id
+              //setTimeout(appendMessage(message), 5000);              
+              scrollspyID++;
+              conversation_stepid++;            
+           
+
+           
+          }   
+          speechSynthesis.speak(u);
+    }   
+
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const   recognition = new SpeechRecognition();
+            recognition.interimResults = true;
+            recognition.lang = 'en-US';
+
+            recognition.addEventListener('result', event => {
+                const transcript = Array.from(event.results)
+                    .map(result => result[0])
+                    .map(result => result.transcript)
+                    .join(''); 
+                // If you make a pause,
+                // you should probably create a new container for the next portion of recognized content
+                if (event.results[0].isFinal) {
+            
+                    console.log('isFinal:' + transcript);                                    
+                    appendMessage_client(transcript);
+                                                                       
+                }
+                if(transcript.includes('stop')){
+                  OpenMic('stop');
+                }
+
+                if(transcript.includes('Next')){                    
+                    ForNextConents();
+                    OpenMic('stop');
+                }
+
+               // if(transcript.includes('vocabulary is breaking new breaking new about')){
+               //    console.log('----Ok!')
+               // }
+
+                console.log(transcript);
+                
+            });
+            //check end 
+            recognition.addEventListener('end', function(){
+              //alert('Ok!');
+              //getDataserver:
+
+            });
+
+// We should start recognition after each pause
+// Other way it will just stop recognizing forever (till the next page load)
+
+//recognition.addEventListener('end', recognition.start);
+
+// Starting recognition first time
+//recognition.stop();
+
+
+
+
+  </script>
+
+ 
+<div class="container py-5">
+    <div class="cd1 mx-auto" style="max-width:auto;">
+        <div class="card-header bg-transparent">         
+                <div class="navbar navbar-expand p-0">
+                    {{> menuindex1 }}
+                </div>
+        </div>
+        <div id="divscrollermessage" class="card-body p-4" style="height: 500px; overflow: auto;">
+
+          {{!-- <section id="scrollermessage">
+            <div class="col-md-6 col-lg-7 col-xl-7">
+                <ul class="list-unstyled text-white">
+                    <li class="d-flex justify-content-between mb-4" >
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
+                          class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
+                        <div class="cardchatR card mask-custom w-100">
+                            <div class="card-header d-flex justify-content-between p-1"
+                              style="border-bottom: 1px solid rgba(255,255,255,.3);">
+                              <p class="fw-bold mb-0">Brad Pitt</p>
+                              <p class="text-light small mb-0"><i class="far fa-clock"></i> 12 mins ago</p>
+                            </div>
+                            <div class="card-body" style="color:aquamarine">
+                              <p class="mb-0">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                labore et dolore magna aliqua.
+                              </p>
+                            </div>
+                        </div>
+                  </li>
+                </ul>
+            </div>
+          </section>
+          <section id="scrollermessage">
+                <div class="col-md-6 col-lg-7 col-xl-7">
+                    <ul class="list-unstyled text-white">
+                        <li class="d-flex justify-content-between mb-4">
+                            <div class="cardchatL card mask-custom w-100">
+                              <div class="card-header d-flex justify-content-between p-1"
+                                style="border-bottom: 1px solid rgba(255,255,255,.3);">
+                                <p class="fw-bold mb-0">Lara Croft</p>
+                                <p class="text-light small mb-0"><i class="far fa-clock"></i> 13 mins ago</p>
+                              </div>
+                              <div class="card-body" style="color:rgb(209, 231, 227)">
+                                <p class="mb-0">
+                                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                                  laudantium.
+                                </p>
+                              </div>
+                            </div>
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp" alt="avatar"
+                              class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
+                          </li> 
+                    </ul>
+                </div>  
+          </section> --}}
+            
+            <div id="addmessage-container"></div>              
+        </div>
+
+        <div class="card-footer bg-white bottom-0 m-0 p-1">
+            <div class="input-group">
+                <div class="input-group-text bg-transparent border-0">
+                  
+                   <form id="send-container-next">
+                     <button id="send-clip" name="send-clip" type="submit" class="btn btn-light text-secondary">
+                        <i class="bi bi-box-arrow-in-down"></i>
+                    </button>                        
+                   </form>
+               
+              
+
+                </div>
+                <input id="message-input" name="message-input" type="text" class="form-control border-0" placeholder="Write a message...">
+                <div class="input-group-text bg-transparent border-0">
+                    <form id="send-container">
+                      <button id="click_to_convert" type="submit" class="btn btn-light text-secondary">
+                          <i class="bi bi-send"></i>
+                      </button>                      
+                    </form>
+
+                </div>
+                <div class="input-group-text bg-transparent border-0">  
+                    <button id="send-mic-stop" name="send-mic-stop" onclick="javascript:OpenMic('stop');" type="button" class="btn btn-light text-secondary">
+                        <i class="bi bi-mic-mute-fill"></i>
+                    </button>  
+
+                    <button id="send-mic-open" name="send-mic-open" onclick="javascript:OpenMic('open');" type="button" class="btn btn-light text-secondary">
+                        <i class="bi bi-mic"></i>
+                    </button>                                       
+                </div>
+            </div>
+        </div>
+
+       
+    </div>
+</div>
+ 
+{{!-- <div class="card-footer">
+ <div class="input-group">
+    <textarea id="message-input" name="message-input" class="form-control type_msg" placeholder="Type your message..."></textarea>
+    <div class="input-group-append">
+          <form id="send-container">
+            <button id="click_to_convert" type="submit" class="btn float-end">                                     
+              <span class="input-group-text send_btn"><i class="bi bi-send-fill"></i></span>                   
+            </button>
+          </form>   								 
+    </div>
+ </div>
+ </div> --}}
+ 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" ></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+ 
+ 
+ 
+        <input type="hidden" id="userid" name="userid" value="{{user.id}}" />
+        <input type="hidden" id="username" name="username" value="{{user.username}}" />
+        <input type="hidden" id="email" name="email" value="{{user.email}}" />
+        <input type="hidden" id="languages_id" name="languages_id" value="{{user.languages_id}}" />  
+        <input type="hidden" id="urlname" name="urlname" value="{{urlname}}" />
+</body>
+</html>

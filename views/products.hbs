@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>Sig English - AI Speech , Learning Grammar</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+         <link href="/stylesheets/favicon.ico" rel="shortcut icon" type="image/x-icon" >
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" href="/stylesheets/main.css"> 
+        <link rel="stylesheet" href="/stylesheets/mainchat.css">       
+        <link rel="stylesheet" href="/stylesheets/panelflipevent.css">     
+        <link rel="stylesheet" href="/stylesheets/menucontents.css">  
+        <script defer src="/socket.io/socket.io.js"></script>
+        <script  defer src="/javascripts/scriptproducts.js"></script>     
+           
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+</head>
+<body>
+  <script type="text/javascript">
+  var micOpen = true;
+    function CheckStep(transcript){
+
+    }
+    function Bot_SpeechSynthesisUtterance(message){
+          //appendMessage(message);
+          var u = new SpeechSynthesisUtterance();                                 
+          u.text = message;
+          u.lang = 'en-US';
+          u.rate = 0.8;
+          u.onend = function(event) {  
+              var vTime = formatDate(new Date());
+              console.log('Finished: '  + vTime); 
+              //setTimeout(OpenMic('open'),3000);
+              //step id
+              //setTimeout(appendMessage(message), 5000);              
+              scrollspyID++;
+              conversation_stepid++;            
+           
+
+           
+          }   
+          speechSynthesis.speak(u);
+    }   
+
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const   recognition = new SpeechRecognition();
+            recognition.interimResults = true;
+            recognition.lang = 'en-US';
+
+            recognition.addEventListener('result', event => {
+                const transcript = Array.from(event.results)
+                    .map(result => result[0])
+                    .map(result => result.transcript)
+                    .join(''); 
+                // If you make a pause,
+                // you should probably create a new container for the next portion of recognized content
+                if (event.results[0].isFinal) {
+            
+                    console.log('isFinal:' + transcript);                                    
+                    appendMessage_client(transcript);
+                                                                       
+                }
+                if(transcript.includes('stop')){
+                  OpenMic('stop');
+                }
+
+                if(transcript.includes('Next')){                    
+                    ForNextConents();
+                    OpenMic('stop');
+                }
+
+               // if(transcript.includes('vocabulary is breaking new breaking new about')){
+               //    console.log('----Ok!')
+               // }
+
+                console.log(transcript);
+                
+            });
+            //check end 
+            recognition.addEventListener('end', function(){
+              //alert('Ok!');
+              //getDataserver:
+
+            });
+
+// We should start recognition after each pause
+// Other way it will just stop recognizing forever (till the next page load)
+
+//recognition.addEventListener('end', recognition.start);
+
+// Starting recognition first time
+//recognition.stop();
+
+
+
+
+  </script>
+
+
+ 
+<div class="container py-5">
+    <div class="cd1 mx-auto" style="max-width:auto;">
+        <div class="card-header bg-transparent">       
+            <div class="navbar navbar-expand p-0">
+                    {{> menucheckout_product }}    
+
+            </div>
+        </div>
+        <div id="divscrollermessage" class="card-body p-4" style="height: 500px; overflow: auto;">
+
+{{#each userData}}         
+   <form data-id="{{products_id}}" action="/auth/Customers_basket" method="post">
+     <section id="scrollermessage">
+            <div class="col-md-6 col-lg-7 col-xl-7">
+                <ul class="list-unstyled text-white">
+                    <li class="d-flex justify-content-between mb-4" >
+                        <img src="./images/bg/SIG.jpg"alt="avatar"
+                          class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
+                        <div class="cardchatR card mask-custom w-100">
+                            <div class="card-header d-flex justify-content-between p-1"
+                              style="border-bottom: 1px solid rgba(255,255,255,.3);">
+                              <p class="fw-bold mb-0">{{categories_name}}</p>
+                              <p class="text-light small mb-0 badge rounded-pill bg-danger text-decoration-line-through" > price: $0.80</p>
+                            </div>
+                            <div class="card-body" style="color:aquamarine">
+                              <p class="mb-0">
+                                 {{products_name}}
+                              </p>
+
+         <ul class="d-flex list-unstyled mt-auto">
+                    <li class="me-auto">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-volume-up-fill" viewBox="0 0 16 16">
+                        <path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/>
+                        <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/>
+                        <path d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/>
+                      </svg>
+                    </li>
+                    <li class="d-flex align-items-center me-3">
+                      <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
+                      <small style="color:rgb(77, 4, 4);" class="badge rounded-pill bg-danger">promot: -(${{products_price}})</small>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
+                      <small style="color:rgb(183, 7, 80);">
+                        
+                          <select id="hour" name="hour" class="form-control" aria-placeholder="hour">     
+                            <option value="45">/45 hr</option>
+                            <option value="75">/75 hr</option>
+                            <option value="95">/95 hr</option>
+                            <option value="125">/125 hr</option>
+                            <option value="140">/140 hr</option>
+                            {{!-- <option value="1">/1 hr</option>
+                            <option value="2">2 hr</option>
+                            <option value="3">3 hr</option>
+                            <option value="4">4 hr</option>
+                            <option value="5">5 hr</option>
+                            <option value="6">6 hr</option>
+                            <option value="7">7 hr</option>
+                            <option value="8">8 hr</option>
+                            <option value="9">9 hr</option>
+                            <option value="10">10 hr</option>
+                            <option value="11">11 hr</option>
+                            <option value="12">12 hr</option>
+                            <option value="13">13 hr</option>
+                            <option value="14">14 hr</option>
+                            <option value="15">15 hr</option>
+                            <option value="16">16 hr</option>
+                            <option value="17">17 hr</option>
+                            <option value="18">18 hr</option>
+                            <option value="19">19 hr</option>
+                            <option value="20">20 hr</option>
+                            <option value="21">21 hr</option>
+                            <option value="22">22 hr</option>
+                            <option value="23">23 hr</option>
+                            <option value="24">24 hr</option>     --}}
+                          </select>  
+
+                        </small>
+
+                    </li>
+                  </ul> 
+                      <input type="hidden" id="products_id" name="products_id" value="{{products_id}}" />
+                      <input type="hidden" id="products_quantity" name="products_quantity" value="{{products_quantity}}" />
+                      <input type="hidden" id="products_price" name="products_price" value="{{products_price}}" />
+                            <button class="btn btn-primary" type="submit" data-id="{{products_id}}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add.">
+                                    Add to cart
+                            </button>    
+
+                            </div>
+                        </div>
+                  </li>
+                </ul>
+            </div>
+          </section>
+   </form>
+{{/each}}           
+    {{!--       
+          <section id="scrollermessage">
+                <div class="col-md-6 col-lg-7 col-xl-7">
+                    <ul class="list-unstyled text-white">
+                        <li class="d-flex justify-content-between mb-4">
+                            <div class="cardchatL card mask-custom w-100">
+                              <div class="card-header d-flex justify-content-between p-1"
+                                style="border-bottom: 1px solid rgba(255,255,255,.3);">
+                                <p class="fw-bold mb-0">Lara Croft</p>
+                                <p class="text-light small mb-0"><i class="far fa-clock"></i> 13 mins ago</p>
+                              </div>
+                              <div class="card-body" style="color:rgb(209, 231, 227)">
+                                <p class="mb-0">
+                                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                                  laudantium.
+                                </p>
+                              </div>
+                            </div>
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp" alt="avatar"
+                              class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
+                          </li> 
+                    </ul>
+                </div>  
+          </section> 
+     --}}        
+            <div id="addmessage-container-product"></div>              
+        </div>
+
+        <div hidden="true" class="card-footer bg-white bottom-0 m-0 p-1">
+            <div class="input-group">
+                <div class="input-group-text bg-transparent border-0">
+                  
+                   <form id="send-container-next">
+                     <button id="send-clip" name="send-clip" type="submit" class="btn btn-light text-secondary">
+                        <i class="bi bi-box-arrow-in-down"></i>
+                    </button>                        
+                   </form>
+               
+              
+
+                </div>
+                <input id="message-input" name="message-input" type="text" class="form-control border-0" placeholder="Write a message...">
+                <div class="input-group-text bg-transparent border-0">
+                    <form id="send-container">
+                      <button id="click_to_convert" type="submit" class="btn btn-light text-secondary">
+                          <i class="bi bi-send"></i>
+                      </button>                      
+                    </form>
+
+                </div>
+                <div class="input-group-text bg-transparent border-0">  
+                    <button id="send-mic-stop" name="send-mic-stop" onclick="javascript:OpenMic('stop');" type="button" class="btn btn-light text-secondary">
+                        <i class="bi bi-mic-mute-fill"></i>
+                    </button>  
+
+                    <button id="send-mic-open" name="send-mic-open" onclick="javascript:OpenMic('open');" type="button" class="btn btn-light text-secondary">
+                        <i class="bi bi-mic"></i>
+                    </button>                                       
+                </div>
+            </div>
+        </div>
+
+       
+    </div>
+</div>
+ 
+{{!-- <div class="card-footer">
+ <div class="input-group">
+    <textarea id="message-input" name="message-input" class="form-control type_msg" placeholder="Type your message..."></textarea>
+    <div class="input-group-append">
+          <form id="send-container">
+            <button id="click_to_convert" type="submit" class="btn float-end">                                     
+              <span class="input-group-text send_btn"><i class="bi bi-send-fill"></i></span>                   
+            </button>
+          </form>   								 
+    </div>
+ </div>
+ </div> --}}
+ 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" ></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+ 
+ 
+ 
+        <input type="hidden" id="userid" name="userid" value="{{user.id}}" />
+        <input type="hidden" id="username" name="username" value="{{user.username}}" />
+        <input type="hidden" id="email" name="email" value="{{user.email}}" />
+        <input type="hidden" id="languages_id" name="languages_id" value="{{user.languages_id}}" />  
+        <input type="hidden" id="urlname" name="urlname" value="{{urlname}}" />
+</body>
+</html>

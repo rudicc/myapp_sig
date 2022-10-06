@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+        <meta charset="utf-8">
+        <link href="/stylesheets/favicon.ico" rel="shortcut icon" type="image/x-icon" >
+        <meta name="viewport" content="width=device-width, initial-scale=1">         
+        <meta name="description" content="">
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+        <meta name="generator" content="Hugo 0.98.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">           
+        
+        <!-- Custom styles for this template -->            
+        <link rel="stylesheet" href="/stylesheets/main.css">
+        <link rel="stylesheet" href="/stylesheets/signin.css">
+        <title>Registers</title>
+
+  </head>
+  <body class="bg-light">
+
+ {{!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Offcanvas navbar large">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">SIG English</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end text-white bg-dark" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbar2Label">SIG</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/Guides" hidden="false">Guides</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Compronents" hidden="false">Compronents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Architecture" hidden="false">Architecture</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Blog" tabindex="-1" aria-disabled="true" hidden="false">Blog</a>
+                    </li>  
+                </ul>
+                
+ 
+
+                <div class="text-end">
+                  <a class="btn btn-outline-light me-2" href="/SignIn" tabindex="-1" aria-disabled="true">Log In</a>              
+                </div>
+        </div>
+      </div>
+    </div>
+  </nav> --}}
+ 
+<br>
+    <div class="container p-5">
+        <main class="registercard form-signin w-100 m-auto cd2 ">  
+              <h1 class="h3 mb-3 fw-normal"></h1>    
+
+              {{#if msg}}
+                  <p class="{{msg_type}}">{{msg}}</p>
+              {{/if}}
+
+            <form action="/auth/Registers" method="post">
+                <h1 class="h3 mb-3 fw-normal">Sign Up SIG English</h1>
+                <div class="form-floating mb-2">
+                    <input type="text" class="form-control" id="txtUsername" name="txtUsername" placeholder="Username">
+                    <label for="lblUsername">UserName</label>
+                </div>
+
+                <div class="form-floating mb-2">
+                    <input type="email" class="form-control" id="txtEmail" name="txtEmail" placeholder="name@example.com">
+                    <label for="lblemail">Email address</label>
+                </div>
+
+                <div class="form-floating mb-2">
+                    <input type="password" class="form-control" id="txtPassword" name="txtPassword" placeholder="Password">
+                    <label for="lblPassword">Password</label>
+                </div>
+
+                                
+                <div class="form-floating mb-2">
+                    <input type="password" class="form-control" id="txtConfirm_password" name="txtConfirm_password" placeholder="Confirm Password">
+                    <label for="lblConfirm_password">Confirm Password</label>
+                </div>
+                
+                 <button class="w-100 btn btn-lg btn-primary" name="submit" type="submit">Sign Up</button>
+            </form>                
+                <div class="form-floating fw mb-2">
+                  <p>You have account : <a href="/SignIn">Sign In</a></p>
+                </div>
+        </main>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+      
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+  </body>
+</html>

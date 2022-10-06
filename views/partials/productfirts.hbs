@@ -1,0 +1,97 @@
+
+<main>
+ 
+<div class="container px-4 py-5" id="icon-grid" data-bs-smooth-scroll="true">
+<h4 class="pb-2 border-bottom">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-volume-up-fill" viewBox="0 0 16 16">
+                  <path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/>
+                  <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/>
+                  <path d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/>
+                </svg>
+  Products Speech Learning Grammar 
+  </h4>
+  {{!-- row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5 --}}
+ <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4 py-5">
+
+    {{#each userData}} 
+  <div class="newcard cd1 col d-flex align-items-start"> 
+        <form data-id="{{products_id}}" action="/auth/Customers_basket" method="post"> 
+          <div class="col">
+              <span class="newcard-number fw-bold">{{products_id}}</span>
+              <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#bootstrap"/></svg>
+              <div>
+                <h4 class="fw-bold mb-0">{{categories_name}}</h4>
+                <p>{{products_name}}</p>
+
+                  <ul class="d-flex list-unstyled mt-auto">
+                    <li class="me-auto">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-volume-up-fill" viewBox="0 0 16 16">
+                        <path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/>
+                        <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/>
+                        <path d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/>
+                      </svg>
+                    </li>
+                    <li class="d-flex align-items-center me-3">
+                      <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
+                      <small style="color:rgba(16, 17, 16, 0.978);"> ${{products_price}}</small>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
+                      <small style="color:rgb(183, 7, 80);">
+                        
+                          <select id="hour" name="hour" class="form-control" aria-placeholder="hour">     
+                            <option value="45">/45 hr</option>
+                            <option value="75">/75 hr</option>
+                            <option value="95">/95 hr</option>
+                            <option value="125">/125 hr</option>
+                            <option value="140">/140 hr</option>
+                            {{!-- <option value="1">/1 hr</option>
+                            <option value="2">2 hr</option>
+                            <option value="3">3 hr</option>
+                            <option value="4">4 hr</option>
+                            <option value="5">5 hr</option>
+                            <option value="6">6 hr</option>
+                            <option value="7">7 hr</option>
+                            <option value="8">8 hr</option>
+                            <option value="9">9 hr</option>
+                            <option value="10">10 hr</option>
+                            <option value="11">11 hr</option>
+                            <option value="12">12 hr</option>
+                            <option value="13">13 hr</option>
+                            <option value="14">14 hr</option>
+                            <option value="15">15 hr</option>
+                            <option value="16">16 hr</option>
+                            <option value="17">17 hr</option>
+                            <option value="18">18 hr</option>
+                            <option value="19">19 hr</option>
+                            <option value="20">20 hr</option>
+                            <option value="21">21 hr</option>
+                            <option value="22">22 hr</option>
+                            <option value="23">23 hr</option>
+                            <option value="24">24 hr</option>     --}}
+                          </select>  
+
+                        </small>
+
+                    </li>
+                  </ul> 
+                      <input type="hidden" id="products_id" name="products_id" value="{{products_id}}" />
+                      <input type="hidden" id="products_quantity" name="products_quantity" value="{{products_quantity}}" />
+                      <input type="hidden" id="products_price" name="products_price" value="{{products_price}}" />
+                            <button class="btn btn-primary" type="submit" data-id="{{products_id}}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Add.">
+                                    Add to cart
+                            </button>                      
+
+       
+              </div>
+
+          </div>
+        </form>  
+
+  </div> 
+    {{/each}} 
+ 
+
+ </div>
+</div> 
+</main>

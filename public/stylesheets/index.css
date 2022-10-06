@@ -1,0 +1,88 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+
+body{
+  
+  background-image: url(../images/bg/benjamin-voros-phIFdC6lA4E-unsplash.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+
+  backdrop-filter: blur(1rem);
+ 
+  /* border-top-color: rgba(255, 255, 255, 0.5);
+  border-left-color: rgba(255, 255, 255, 0.5);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  border-right-color: rgba(255, 255, 255, 0.1); */
+
+  /* background:transparent; */
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  /* background: -webkit-linear-gradient(to bottom right, rgba(252, 203, 144, 1), rgba(213, 126, 235, 1)); */
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* background: linear-gradient(to bottom right, rgb(111, 237, 231), rgb(82, 77, 225)) */
+
+
+  /* color: white; */
+  width: auto;
+}
+
+/*Blackround Nvbar*/
+.mainNvbar{
+  border: 1px solid transparent;
+    
+  /* backdrop-filter: blur(1rem); */
+  box-shadow: 1.3rem 1.3rem 1.3rem rgba(0, 0, 0, 0.5);
+
+  border-top-color: rgba(255, 255, 255, 0.5);
+  border-left-color: rgba(255, 255, 255, 0.5);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  border-right-color: rgba(255, 255, 255, 0.1);
+}
+.newcard{
+  
+  padding: 5rem 2.5rem;
+
+  border-radius: 1rem;  
+  border: 1px solid transparent;
+  
+  backdrop-filter: blur(1rem);
+  box-shadow: 1.3rem 1.3rem 1.3rem rgba(0, 0, 0, 0.5);
+
+  border-top-color: rgba(255, 255, 255, 0.5);
+  border-left-color: rgba(255, 255, 255, 0.5);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  border-right-color: rgba(255, 255, 255, 0.1);
+
+
+}
+.title {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 40rem;
+  font-size: 4rem;
+  text-align: center;
+}
+
+.cd1 {
+  background-color: rgba(255,255,225,0.1);
+}
+
+.cd2 {
+  color: white;
+  background: linear-gradient(to right bottom, rgba(255,255,223,0.1) , rgba(255,255,223,0.3) );
+}
+.btns {
+  border-radius: 2rem;
+
+}
+.bths:hover {
+  box-shadow: 0 0.3rem 1rem rgb(0, 0, 0 , 0.1);
+}
+.newcard-number{
+  color: rgb(255, 255, 255, 0.1);
+  font-size: 8rem;
+  z-index: -1;
+  position: absolute;
+  top: -1rem;
+  right: 2.5rem;
+}

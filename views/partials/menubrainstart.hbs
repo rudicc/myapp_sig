@@ -1,0 +1,38 @@
+                    <ul class="navbar-nav me-auto align-items-center">
+                        <li class="nav-item">
+                          <span><i class="bi bi-person-check" style="margin-left: 25px;"></i> : {{user.username}}</span> 
+                        </li>  
+                        <li>
+                             <i class="bi bi-watch"></i> : <span id="seconds">00</span>:<span id="tens">00</span>                          
+                        </li>  
+                        <li>
+                          <span>
+                            <!-- Button trigger modal -->
+                                  <button type="button" id="button-stop" class="btn-outline-light" data-bs-toggle="modal" data-bs-target="#Stop">
+                                    Stop
+                                  </button>
+                          </span>
+                        </li>                                                                      
+                    </ul>
+
+                    <ul class="navbar-nav me-auto align-items-center">
+                      <li class="nav-item">                       
+                        <ul class="navbar-nav pcoded-left-item">
+                            {{!-- <li class="nav-item">
+                              <span><a class="btn btn-outline-light" href="/gstart"><i class="bi bi-arrow-left"></i></a></span>
+                            </li> --}}
+                            <li class="nav-item">
+                              <span id="action_menu_btn_sub" hidden="true" ><a class="btn btn-outline-light" href="#"><i class="bi bi-menu-down"></i></a><div id="action_menu_sub" class="card-body cd1"></div>  </span>
+                            </li> 
+                        </ul>                        
+                      </li> 
+                    </ul>
+                    <ul class="navbar-nav pcoded-left-item" style="color:aquamarine">                     
+                      <li class="nav-item"> 
+                        <ul class="navbar-nav pcoded-left-item">
+                          <li class="nav-item">
+                            <span id="action_menu_btn" hidden="true" style="margin-right: 50px;"><i class="bi bi-three-dots-vertical"></i><div id="action_menu" class="card-body cd1"></div></span> 
+                          </li>
+                        </ul>                                                                              
+                      </li>                                           
+                    </ul> 

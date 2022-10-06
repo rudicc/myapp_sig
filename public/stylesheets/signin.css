@@ -1,0 +1,54 @@
+.registercard{
+  padding: 5rem 2.5rem;
+
+  border-radius: 1rem;  
+  border: 1px solid transparent;
+  
+  backdrop-filter: blur(1rem);
+  box-shadow: 1.3rem 1.3rem 1.3rem rgba(0, 0, 0, 0.5);
+
+  border-top-color: rgba(255, 255, 255, 0.5);
+  border-left-color: rgba(255, 255, 255, 0.5);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  border-right-color: rgba(255, 255, 255, 0.1);
+
+}
+
+.form-signin {
+    max-width: 330px;     
+    padding: 15px;
+  }
+  
+  .form-signin .form-floating:focus-within {
+    z-index: 2;  
+
+  }
+  
+  .form-signin input[type="text"] {
+    margin-bottom: -1px;
+    border-radius: 1rem; 
+    background-color: transparent;
+
+   
+  }
+
+  .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-radius: 1rem; 
+    background-color: transparent;
+   
+  }
+  
+  .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-radius: 1rem; 
+    background-color: transparent;
+  }
+  
+  .error{
+
+    color: rgb(222, 74, 20);
+  }
+  .good{
+    color: rgba(17, 172, 133, 0.912);
+  }

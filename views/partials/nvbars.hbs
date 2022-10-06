@@ -1,0 +1,72 @@
+   <div class="sticky-top fixed-top">
+  <nav class="navbar mainNvbar cd1 navbar-expand-lg navbar-dark bg-dark sticky-top fixed-top" aria-label="Offcanvas navbar large" style="border-bottom: 1px solid rgba(255,255,255,.3);" >
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">SIG English</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end text-white bg-dark" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbar2Label">SIG</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./guides">Guides</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./products">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./architecture">Architecture</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./blogs" tabindex="-1" aria-disabled="true">Blog</a>
+                    </li>  
+                </ul>
+                
+ 
+                <ul class="navbar-nav pcoded-left-item">
+                  <li class="nav-item"> 
+                      <a  href="./checkout" tabindex="-1" aria-disabled="true" class="btn btn-outline-light position-relative"><i class="bi bi-cart3"></i>
+                      
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                          {{cartcount}}+
+                          <span class="visually-hidden">unread messages</span>
+                        </span>
+                      </a>
+                  </li> 
+
+                  <li class="nav-item">
+                    <span>
+                      <a class="btn btn-outline-light " href="./profile" tabindex="-1" aria-disabled="true">
+                      <i class="bi bi-person-check"></i>{{user.username}}:[{{user.languages_name}}]</a>                       
+                    </span>
+ 
+                  </li>  
+
+                        <li class="nav-item dropdown dropstart btn-outline-light me-2">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            
+                          </a>
+                          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start bottom left" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="./accounts">Accounts</a></li>
+                            <li><a class="dropdown-item" href="./help">Help</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="./auth/Logout">Log out</a></li>
+                          </ul>
+                        </li>              
+                </ul>
+
+        </div>
+        <input type="hidden" id="userid" name="userid" value="{{user.id}}" />
+        <input type="hidden" id="username" name="username" value="{{user.username}}" />
+        <input type="hidden" id="email" name="email" value="{{user.email}}" />
+        <input type="hidden" id="languages_id" name="languages_id" value="{{user.languages_id}}" />        
+      </div>
+    </div>
+  </nav>    
+   </div>
+
+  <br>

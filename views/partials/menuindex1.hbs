@@ -1,0 +1,37 @@
+                    
+                   
+                    <ul class="navbar-nav me-auto align-items-center">            
+                        <li class="nav-item">
+                          <span style="margin-left: 25px;"><i class="bi bi-person-check"></i> : {{user.username}}</span> 
+                        </li>                                               
+                    </ul>
+                    <ul class="navbar-nav me-auto align-items-center">   
+             
+  {{!--                     <li class="nav-item" >  
+                        <span id="action_menu_btn"> 
+                        <i class="bi bi-box-arrow-left"></i>
+                        </span> 
+                            <div id="action_menu"></div>                                             
+                           {{> menuindex }}                    
+                      </li>  --}}
+                    </ul>
+                    <ul class="navbar-nav pcoded-left-item" style="color:aquamarine">  
+{{!--                     <li class="nav-item"> 
+                          <a  href="./checkout" tabindex="-1" aria-disabled="true" class="btn btn-outline-light position-relative"><i class="bi bi-cart3"></i>
+                          
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                              {{cartcount}}+                        
+                            </span>
+                          </a>
+                      </li>   --}}                
+                      <li class="nav-item"> 
+                        <ul class="navbar-nav pcoded-left-item">
+                           <div id="action_menu"></div>                                             
+                           {{> menuindex }}    
+
+                          <li class="nav-item" style="margin-left: 50px;">
+                            <span  id="action_menu_btn" style="margin-right: 30px;"><i class="bi bi-three-dots-vertical"></i><div id="action_menu" class="card-body cd1"></div></span> 
+                          </li>
+                        </ul>                                                                              
+                      </li>                                           
+                    </ul> 
