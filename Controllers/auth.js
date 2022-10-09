@@ -72,7 +72,7 @@ exports.SignIn = async (req, res) => {
   
       db.query(
         "select * from users where email=?",
-        txtEmail,
+        [txtEmail],
         async (error, result) => {
           console.log('signin:' + result);
           if (result.length <= 0) {
